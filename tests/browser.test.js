@@ -35,16 +35,16 @@ describe('Clicking "Pusha till stacken"', () => {
 
 
 describe('Verify stack behavior after pushing item', () => {
-    it('incorrectly checks the stack content', async () => {
+    it('correctly checks the stack content', async () => {
         const push = await driver.findElement(By.id('push'));
         await push.click();
         const alert = await driver.switchTo().alert();
         await alert.sendKeys("Äpple");
         await alert.accept();
 
-        // Medvetet fel
+        // Wow nu är det rätt
         const topOfStack = await driver.findElement(By.id('top_of_stack')).getText();
-        expect(topOfStack).toEqual("Banan"); 
+        expect(topOfStack).toEqual("Äpple"); 
     });
 });
 
